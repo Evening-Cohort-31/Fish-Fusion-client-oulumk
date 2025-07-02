@@ -1,5 +1,6 @@
 const {mongerInventory} = require('./fishMonger.js');
 
+// Generates restaurant menu html
 const restaurantInventory = (maxPrice) => {
     let inventory = mongerInventory(maxPrice);
 

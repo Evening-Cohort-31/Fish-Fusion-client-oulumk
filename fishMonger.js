@@ -1,5 +1,6 @@
 const {boatInventory} = require('./fishingBoat.js');
 
+// Filters fish inventory by monger's and chef's requirements and returns results
 function mongerInventory(maxPrice) {
     let inventory = boatInventory();
     let purchasedFish = [];

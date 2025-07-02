@@ -1,3 +1,4 @@
+// array of fish objects
 const inventory = [
     { id: 1, species: "Halibut", weight: 6, price: 3.55, amount: 30 },
     { id: 2, species: "Mackerel", weight: 3, price: 4.10, amount: 48 },
@@ -9,6 +10,7 @@ const inventory = [
     { id: 8, species: "Puffer", weight: 2, price: 9.84, amount: 52 }
 ]
 
+// returns the array of fish objects
 function boatInventory() {
     return inventory
 }
