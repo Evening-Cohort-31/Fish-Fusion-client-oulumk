@@ -7,7 +7,7 @@ const { fishMenu } = require("./restaurant.js")
   writing supporting functionality in the other 
   modules
 */
-const dailyPriceLimit = 3.99
+const dailyPriceLimit = 5.00
 const menu = fishMenu(dailyPriceLimit)
 console.log(menu)
 

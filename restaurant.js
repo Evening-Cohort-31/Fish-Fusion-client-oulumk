@@ -1,7 +1,7 @@
 const {mongerInventory} = require('./fishMonger.js');
 
 // Generates restaurant menu html
-const restaurantInventory = (maxPrice) => {
+const fishMenu = (maxPrice) => {
     let inventory = mongerInventory(maxPrice);
 
     let html = "<h1>Menu</h1>\n\n<article class = 'menu'>"
@@ -12,9 +12,8 @@ const restaurantInventory = (maxPrice) => {
     }
     html += "\n</article>"
     return html
-
 }
 
-console.log(restaurantInventory(4))
+module.exports = {fishMenu}
 
 
