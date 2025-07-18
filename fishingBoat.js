@@ -30,6 +30,7 @@ let specialInventory = [
     { id: 22, species: "Monkfish", weight: 10, price: 15.60, amount: 5, rare: true }
 ]
 
+// Generates a randomized inventory of caught fish
 const generateInventory = () => {
     const diceRolls = 4;
     const diceSize = 4
