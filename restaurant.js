@@ -1,3 +1,5 @@
+const {menuPricer} = require("./menuPricer.js")
+
 // Generates restaurant menu html
 const fishMenu = (inventory) => {
    
@@ -6,7 +8,8 @@ const fishMenu = (inventory) => {
     // Loops through the purchased fish and generates html for menu items
     for (let fish of inventory) {
         let fishName = fish.species
-        html += `\n\t<h2>${fishName}</h2>\n\t<section class="menu__item">${fishName} Soup</section>\n\t<section class="menu__item">${fishName} Sandwich</section>\n\t<section class="menu__item">Grilled ${fishName}</section>\n`
+        
+        html += `\n\t<h2>${fishName}</h2>\n\t<section class="menu__item">${fishName} Soup: $${menuPricer(fish, 6)}</section>\n\t<section class="menu__item">${fishName} Sandwich: $${menuPricer(fish,4)}</section>\n\t<section class="menu__item">Grilled ${fishName}: $${menuPricer(fish,2)}</section>\n`
     }
     html += "\n</article>"
 

@@ -15,7 +15,7 @@ const chefPurchase = (inventory, maxPrice) => {
         // Purchases half the inventory of regular fish that are cheaper or equal to the max price
         } else if (fish.price <= maxPrice) {
             let purchasedAmount = Math.ceil(fish.amount/2);
-            purchases.push({...fish, amount: purchasedAmount});
+            purchases.push({...fish, amount: purchasedAmount, price: Math.round(fish.price * 200,)/100});
             fish.amount -= purchasedAmount;
         }
     }

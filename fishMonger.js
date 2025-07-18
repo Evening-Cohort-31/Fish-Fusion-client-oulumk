@@ -15,12 +15,12 @@ function mongerPurchase(inventory) {
         
         // Purchases all rare fish
         if (fish.isRare) {
-            purchases.push({...fish})
+            purchases.push({...fish, price: Math.round(fish.price * 150,)/100})
             inventory.splice(x,1)
         }
         // Purchases 10 regular fish if conditions are met
         else if (fish.amount >= 10 && fish.price < 7.50) {
-            purchases.push({...fish, amount: 10})
+            purchases.push({...fish, amount: 10, price: Math.round(fish.price * 115,)/100})
             fish.amount -= 10
         }
     }
