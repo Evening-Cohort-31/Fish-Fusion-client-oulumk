@@ -1,10 +1,6 @@
-const {mongerInventory} = require('./fishMonger.js');
-
 // Generates restaurant menu html
-const fishMenu = (maxPrice) => {
-    // Calls mongerInventory with the maxPrice assigns the returned array of fish objects
-    let inventory = mongerInventory(maxPrice);
-
+const fishMenu = (inventory) => {
+   
     let html = "<h1>Menu</h1>\n\n<article class = 'menu'>"
 
     // Loops through the purchased fish and generates html for menu items
