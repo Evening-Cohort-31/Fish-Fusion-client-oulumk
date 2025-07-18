@@ -43,7 +43,7 @@ const catchFish = () => {
         // Randomly selects a species from the selected inventory to be caught
         let inventoryLength = selectionInventory.length;
         let randomIndex = randomNumberGenerator(inventoryLength) - 1
-        let thisCatch = regularInventory[randomIndex]
+        let thisCatch = selectionInventory[randomIndex]
 
         // Removes the caught fish from the pool of remaining fish
         selectionInventory.splice(selectionInventory.indexOf(thisCatch),1)
