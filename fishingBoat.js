@@ -1,7 +1,7 @@
 const {randomNumberGenerator} = require("./rng.js");
 
 // array of fish objects
-let inventory = [
+let regularInventory = [
     { id: 1, species: "Halibut", weight: 6, price: 3.55, amount: 30, rare: false },
     { id: 2, species: "Mackerel", weight: 3, price: 4.10, amount: 48, rare: false },
     { id: 3, species: "Salmon", weight: 5, price: 3.05, amount: 25, rare: false },
@@ -31,7 +31,7 @@ let specialInventory = [
 ]
 
 // Generates a randomized inventory of caught fish
-const generateInventory = () => {
+const createFishPool = () => {
     const diceRolls = 4;
     const diceSize = 4
     // Returns the result of rolling x number of y sided dice. 
@@ -67,12 +67,12 @@ const generateInventory = () => {
         // Assigns which inventory to catch from
         gotLucky && !caughtSpecial 
             ? (selectionInventory = specialInventory, caughtSpecial = true)
-            : selectionInventory = inventory
+            : selectionInventory = regularInventory
 
         // Randomly selects a species from the selected inventory to be caught
         let inventoryLength = selectionInventory.length;
         let randomIndex = randomNumberGenerator(inventoryLength) - 1
-        let thisCatch = inventory[randomIndex]
+        let thisCatch = regularInventory[randomIndex]
 
         // Removes the caught fish from the pool of remaining fish
         selectionInventory.splice(selectionInventory.indexOf(thisCatch),1)
@@ -87,5 +87,5 @@ const generateInventory = () => {
 }
 
 module.exports = {
-    generateInventory
+    generateInventory: createFishPool
 }
