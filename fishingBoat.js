@@ -33,6 +33,7 @@ let specialInventory = [
 const generateInventory = () => {
     const diceRolls = 4;
     const diceSize = 4
+    // Returns the result of rolling x number of y sided dice. 
     const rollTheDice = (diceRolls, diceSize) => {
         let total = 0
         for (let x = 0; x < diceRolls; x ++) {
@@ -40,40 +41,44 @@ const generateInventory = () => {
         }
         return total
 }
+    // Determines the number of species needed to be caught by the fishing boat
     let numberOfSpeciesToCatch = rollTheDice(diceRolls, diceSize)
-    console.log(`Number to catch: ${numberOfSpeciesToCatch}`)
 
+    // Flag for if special fish can be caught
     let gotLucky = false;
+
+    // Allows for an 8% chance of catching a special fish
     if (randomNumberGenerator(25) <= 2) {
         gotLucky = true
     }
 
-    console.log(`Got luckY? ${gotLucky}`)
+    // Flags whether a special fish has already been caught
     let caughtSpecial = false;
-
+    
+    // Array of caught fish
     let caughtFish = []
 
+    // Updated caughtFish array with a random selection of fish species. 
+    // Loops until the the correct number of species is caught 
     while (numberOfSpeciesToCatch > 0) {
-        let inventoryLength = 0
-        let randomIndex = 0
-        let thisCatch
-        if (gotLucky && !caughtSpecial) {
-            inventoryLength = specialInventory.length
-            randomIndex = randomNumberGenerator(inventoryLength) - 1
-            thisCatch = specialInventory[randomIndex]   
-            specialInventory = specialInventory.filter(fish => {
-                specialInventory.indexOf(fish) !== randomIndex
-            })   
-            caughtSpecial = true      
-        } else {
-            inventoryLength = inventory.length
-            randomIndex = randomNumberGenerator(inventoryLength) - 1
-            thisCatch = inventory[randomIndex]
-            inventory = inventory.filter(fish => {
-                return inventory.indexOf(fish) !== randomIndex
-            })
-        }
+        let selectionInventory
+        
+        // Assigns which inventory to catch from
+        gotLucky && !caughtSpecial 
+            ? (selectionInventory = specialInventory, caughtSpecial = true)
+            : selectionInventory = inventory
+
+        // Randomly selects a species from the selected inventory to be caught
+        let inventoryLength = selectionInventory.length;
+        let randomIndex = randomNumberGenerator(inventoryLength) - 1
+        let thisCatch = inventory[randomIndex]
+
+        // Removes the caught fish from the pool of remaining fish
+        selectionInventory.splice(selectionInventory.indexOf(thisCatch),1)
+
+        // Updates the loop condition
         numberOfSpeciesToCatch -= 1
+        // Adds the caught fish to the inventory
         caughtFish.push(thisCatch)
     }
 
